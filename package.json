@@ -22,10 +22,10 @@
         "yargs": "latest",
         "prompt": "latest",
         "mongodb": "latest",
-        "body-parser": "1.0.1",
-        "cookie-parser": "1.0.1",
-        "method-override": "1.0.0",
-        "multer": "0.0.5"
+        "body-parser": "^1.x",
+        "cookie-parser": "^1.x",
+        "method-override": "^2.x",
+        "multer": "^0.0.5"
     },
     "bin": {
         "yama": "bin/yama"
