@@ -1,0 +1,11 @@
+<div class="messages">
+	{% if flash.error %}
+	  <div class="alert alert-danger">{{ flash.error }}</div>
+	{% endif %}
+	{% if flash.info %}
+	  <div class="alert alert-info">{{ flash.info }}</div>
+	{% endif %}
+	{% if flash.success %}
+	  <div class="alert alert-success">{{ flash.success }}</div>
+	{% endif %}
+</div>
