@@ -59,7 +59,7 @@
                         <textarea class="form-control" id="{{ mapName(f, ',') }}" name="{{ mapName(f, ',') }}">{{ doc[f] || "" }}</textarea>
                     {% else %}
                         {% if type == "checkbox" %}
-                            <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] == 'true' %}true{% else %}false{% endif %}">
+                            <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] %}true{% else %}false{% endif %}">
                             <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" placeholder="Type {{ header }}" autocomplete="off" value="{{ doc[f] || "" }}" {% if doc[f] %}checked{% endif %}>
                         {% else %}
                             <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" name="{{ mapName(f, '.') }}" placeholder="Type {{ header }}" autocomplete="off" value="{{ doc[f] || "" }}">
