@@ -18,11 +18,10 @@
                             </a>
                             <ul class="dropdown-menu">
                                 {% for item in menu %}
-                                <li {% if item == path %}active{% endif %}>
-                                    <a href="{{ base }}/{{ item }}" role="menuitem" tabindex="-1">
-                                        {{ capitalizeFirstLetter(item) }}
-                                    </a>
-                                    </li>
+                                    <li {% if item.field == path %}active{% endif %}>
+                                    <a href="{{ base }}/{{ item.field }}" role="menuitem" tabindex="-1">
+                                        {{ item.label }}
+                                    </a></li>
                                 {% endfor %}
                             </ul>
                         </li>

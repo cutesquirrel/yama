@@ -43,7 +43,7 @@
                     {{ d[f][fields[f]['display']] }}
                   {% else %}
                     {{ mapData(d, f, '.') }}
-                    {{ d[f] || "" |raw }}
+                    {{ d[f] || "" |safe }}
                   {% endif %}
                 </a>
               </td>

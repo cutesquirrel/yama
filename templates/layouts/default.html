@@ -9,9 +9,9 @@
                 <ul class="nav nav-list well">
                     <li class="nav-header">Models</li>
                 {% for item in menu %}
-                    <li class="list-group-item {% if item == path %}active{% endif %}">
-                        <a href="{{ base }}/{{ item }}">
-                            {{ capitalizeFirstLetter(item) }}
+                    <li class="list-group-item {% if item.field == path %}active{% endif %}">
+                        <a href="{{ base }}/{{ item.field }}">
+                            {{ item.label }}
                         </a>
                     </li>
                 {% endfor %}
