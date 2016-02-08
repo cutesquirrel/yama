@@ -60,12 +60,12 @@
     </div>
     <ul class="pagination">
       <li class="{% if page == 1 %}disabled{% endif %}">
-        <a href="{{ base }}/{{ path }}?page=1&perpage={{ perPage }}" aria-label="First">
+        <a href="{% if page == 1 %}#{% else %}{{ base }}/{{ path }}?page=1&perpage={{ perPage }}{% endif %}" aria-label="First">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
       <li class="{% if page == 1 %}disabled{% endif %}">
-        <a href="{{ base }}/{{ path }}?page={{ decrease(page) }}&perpage={{ perPage }}" aria-label="Previous">
+        <a href="{% if page == 1 %}#{% else %}{{ base }}/{{ path }}?page={{ decrease(page) }}&perpage={{ perPage }}{% endif %}" aria-label="Previous">
           <span aria-hidden="true">&lt;</span>
         </a>
       </li>
@@ -75,12 +75,12 @@
         </li>
       {% endfor %}
       <li class="{% if page == pages %}disabled{% endif %}">
-        <a href="{{ base }}/{{ path }}?page={{ increase(page) }}&perpage={{ perPage }}" aria-label="Next">
+        <a href="{% if page == pages %}#{% else %}{{ base }}/{{ path }}?page={{ increase(page) }}&perpage={{ perPage }}{% endif %}" aria-label="Next">
           <span aria-hidden="true">&gt;</span>
         </a>
       </li>
       <li class="{% if page == pages %}disabled{% endif %}">
-        <a href="{{ base }}/{{ path }}?page={{ pages }}&perpage={{ perPage }}" aria-label="Last">
+        <a href="{% if page == pages %}#{% else %}{{ base }}/{{ path }}?page={{ pages }}&perpage={{ perPage }}{% endif %}" aria-label="Last">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
