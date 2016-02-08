@@ -56,7 +56,7 @@
                             {% for v in doc[f] %} <li>{{ v }}</li> {% endfor %} <li></li>
                         </ul>
                     {% elseif type == "textarea" %}
-                        <textarea class="form-control" id="{{ mapName(f, ',') }}" name="{{ mapName(f, ',') }}">{{ doc[f] || "" }}</textarea>
+                        <textarea class="form-control" id="{{ mapName(f, ',') }}" name="{{ mapName(f, ',') }}" rows="{{ fields[f].rows| default("5") }}">{{ doc[f] || "" }}</textarea>
                     {% else %}
                         {% if type == "checkbox" %}
                             <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] %}true{% else %}false{% endif %}">
