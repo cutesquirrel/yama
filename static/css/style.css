@@ -1,4 +1,4 @@
-* {
+/** {
     font-family: helvetica, arial;
     font-size: 1em;
     color: #555;
@@ -216,4 +216,11 @@ background-color: #fbfbfd;
 
 th.sort{
   cursor: pointer;
+}*/
+
+.table tbody tr td{
+  vertical-align: middle;
+}
+.table tbody td:last-child{
+ white-space: nowrap;
 }

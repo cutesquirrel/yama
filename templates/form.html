@@ -18,16 +18,16 @@
 <div id="form">
     <form action="{{ action }}" class="form-horizontal" method="post" role="form" autocomplete="off">
         {% for f in edit %}
-            <div class="control-group">
+            <div class="form-group">
                 {% set type = fields[f]['widget'] || "text" %}
                 {% set header = fields[f]['header'] || f %}
                 {% set name = fields[f]['name'] || f %}
                 {% set multiple = fields[f]['multiple'] %}
                 {% set readonly = fields[f]['readonly'] || false %}
-                <label for="{{ f }}" class="control-label">
+                <label for="{{ f }}" class="control-label col-sm-2">
                     {{ header }}:
                 </label>
-                <div class="controls">
+                <div class="controls col-sm-10">
                     {{ mapData(doc, f, '.') }}
                     {% if readonly %}
                         {% if doc[f] %}
@@ -40,7 +40,7 @@
                     {% elseif type == "select" %}
                         {% set sel = getSelectedValue(doc, f, fields) %}
 
-                        <select name="{{ mapName(f, '.') }}" id="{{ mapName(f, '.') }}" {% if multiple %}multiple{% endif %}>
+                        <select class="form-control" name="{{ mapName(f, '.') }}" id="{{ mapName(f, '.') }}" {% if multiple %}multiple{% endif %}>
                             {% set values = fields[f]['values'] %}
                             {% for v in values %}
                                 {% if isType(v, 'object') %}
@@ -68,8 +68,9 @@
                 </div>
             </div>
         {% endfor %}
-        <div class="form-actions">
-            <button class="btn" type="button" onclick="history.back();">Cancel</button>
+        <div class="form-actions pull-right">
+            <a href="#" type="button" onclick="history.back();">Cancel</a>
+            &nbsp;&nbsp;
             <button class="btn btn-primary" type="submit">Save</button>
         </div>
     </form>
