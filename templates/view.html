@@ -7,7 +7,7 @@
         {% for f in edit %}
         <tr>
             {{ mapData(doc, f, '.') }}
-            <th>{{ fields[f].header || f }}</th>
+            <th>{{ fields[f].label|safe }}</th>
             <td>
             {% if doc[f] %}
                 {% if fields[f].widget == "select" %}
@@ -21,12 +21,17 @@
                             {% if fields[f].ref %}
                                 {{ v[fields[f].display] }}{% if loop.last %}{% else %}, {% endif %}
                             {% else %}
-                              {{ v }}{% if loop.last %}{% else %}, {% endif %}
+                              {% if v.toString %}
+                                {{ v.toString() }}
+                              {% else %}
+                                {{ v|safe }}
+                              {% endif %}
+                              {% if loop.last %}{% else %}, {% endif %}
                             {% endif %}
                           {% endfor %}
                         {% endif %}
                 {% else %}
-                    {{ doc[f] }}
+                    {{ doc[f]|safe }}
                 {% endif %}
             {% endif %}
             </td>

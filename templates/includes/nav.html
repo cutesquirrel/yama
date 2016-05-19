@@ -23,7 +23,7 @@
                 {% for item in menu %}
                     <li {% if item.field == path %}active{% endif %}>
                     <a href="{{ base }}/{{ item.field }}" role="menuitem" tabindex="-1">
-                        {{ item.label }}
+                        {{ item.label|safe }}
                     </a></li>
                 {% endfor %}
             </ul>

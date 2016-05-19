@@ -20,12 +20,13 @@
         {% for f in edit %}
             <div class="form-group">
                 {% set type = fields[f]['widget'] || "text" %}
-                {% set header = fields[f]['header'] || f %}
+                {% set label = fields[f]['label'] || f %}
+                {% set help = fields[f]['help'] || false %}
                 {% set name = fields[f]['name'] || f %}
                 {% set multiple = fields[f]['multiple'] %}
                 {% set readonly = fields[f]['readonly'] || false %}
                 <label for="{{ f }}" class="control-label col-sm-2">
-                    {{ header }}:
+                    {{ label|safe }}
                 </label>
                 <div class="controls col-sm-10">
                     {{ mapData(doc, f, '.') }}
@@ -60,10 +61,13 @@
                     {% else %}
                         {% if type == "checkbox" %}
                             <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] %}true{% else %}false{% endif %}">
-                            <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" placeholder="Type {{ header }}" autocomplete="off" value="{{ doc[f] || "" }}" {% if doc[f] %}checked{% endif %}>
+                            <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" placeholder="Type {{ label }}" autocomplete="off" value="{{ doc[f] || "" }}" {% if doc[f] %}checked{% endif %}>
                         {% else %}
-                            <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" name="{{ mapName(f, '.') }}" placeholder="Type {{ header }}" autocomplete="off" value="{{ doc[f] || "" }}">
+                            <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" name="{{ mapName(f, '.') }}" placeholder="Type {{ label }}" autocomplete="off" value="{{ doc[f] || "" }}">
                         {% endif %}
+                    {% endif %}
+                    {% if help %}
+                      <div class="help">{{ help|safe }}</div>
                     {% endif %}
                 </div>
             </div>

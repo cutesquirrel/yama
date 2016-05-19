@@ -10,7 +10,7 @@
 {% block content %}
 <div id="list">
     <div id="list-top">
-        <h1>{{ title }}</h1>
+        <h1>{{ title|safe }}</h1>
         <div id="new">
           <a href="{{ base }}/{{ path }}/new" class="btn btn-primary" role="button">+ New</a>
         </div>
@@ -24,7 +24,7 @@
           <tr>
             <th></th>
             {% for f in list %}
-              <th class="sort" data-sort="{{ f }}">{{ fields[f].header }}</th>
+              <th class="sort" data-sort="{{ f }}">{{ fields[f].label }}</th>
             {% endfor %}
             <th></th>
           </tr>

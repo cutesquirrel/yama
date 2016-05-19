@@ -10,7 +10,7 @@
                 <div class="list-group">
                     {% for item in menu %}
                     <a href="{{ base }}/{{ item.field }}" class="list-group-item {% if item.field == path %}active{% endif %}">
-                        {{ item.label }}
+                        {{ item.label|safe }}
                     </a>
                 {% endfor %}
                 </div>

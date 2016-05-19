@@ -12,12 +12,12 @@
     {% for f in filters %}
       <div class="control-group">
         {% set type = fields[f]['widget'] || "text" %}
-        {% set header = fields[f]['header'] || f %}
+        {% set label = fields[f]['label'] || f %}
         {% set name = fields[f]['name'] || f %}
         {% set multiple = fields[f]['multiple'] %}
         {% set readonly = fields[f]['readonly'] || false %}
         <label for="{{ f }}" class="control-label">
-            {{ header }}:
+            {{ label|safe }}
         </label>
         <div class="controls">
             {{ mapData(doc, f, '.') }}
