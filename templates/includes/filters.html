@@ -12,17 +12,16 @@
     {% for f in filters %}
       <div class="control-group">
         {% set type = fields[f]['widget'] || "text" %}
-        {% set header = fields[f]['header'] || f %}
+        {% set label = fields[f]['label'] || f %}
         {% set name = fields[f]['name'] || f %}
         {% set multiple = fields[f]['multiple'] %}
         {% set readonly = fields[f]['readonly'] || false %}
         <label for="{{ f }}" class="control-label">
-            {{ header }}:
+            {{ label|safe }}
         </label>
         <div class="controls">
             {{ mapData(doc, f, '.') }}
-            {% if readonly %}
-            {% elseif type == "select" %}
+            {% if type == "select" %}
                 {% set sel = doc[f] ? doc[f]['_id'] : null %}
                 <select name="{{ mapName(f, '.') }}" id="{{ mapName(f, '.') }}" {% if multiple %}multiple{% endif %}>
                     {% set values = fields[f]['values'] %}
@@ -43,7 +42,7 @@
                 <textarea class="form-control" id="{{ mapName(f, ',') }}" name="{{ mapName(f, ',') }}">{{ doc[f] || "" }}</textarea>
             {% else %}
                 {% if type == "checkbox" %}
-                    <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] %}true{% else %}false{% endif %}">
+                    <input type="hidden" name="{{ mapName(f, '.') }}" value="{% if doc[f] == 'true' %}true{% else %}false{% endif %}">
                     <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" autocomplete="off" value="1" {% if doc[f] == 'true' %}checked{% endif %}>
                 {% else %}
                     <input type="{{ type }}" id="{{ mapName(f, '.') }}" class="form-control" name="{{ mapName(f, '.') }}" placeholder="Type {{ header }}" autocomplete="off" value="{{ doc[f] || "" }}">

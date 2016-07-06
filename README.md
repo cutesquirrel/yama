@@ -94,22 +94,22 @@ admin.add('users', 'User', UserSchema, {
     edit: ['fullName', 'active', 'role', 'emails'],
     fields: {
         fullName: {
-            header: 'Full name',
+            label: 'Full name',
             widget: 'text'
         },
         active: {
-            header: 'Active',
+            label: 'Active',
             widget: 'checkbox'
         },
         role: {
-            header: 'Roles',
+            label: 'Roles',
             ref: 'Role',
             widget: 'select',
             multiple: true,
             display: 'name'
         },
         emails: {
-            header: 'Emails',
+            label: 'Emails',
             widget: 'csv',
             placeholder: 'Type an email...',
             pattern: '^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$'
